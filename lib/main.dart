@@ -25,7 +25,7 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  List<Icon> scoreKeepr = [
+  List<Icon> scoreKeeper = [
     Icon(
       Icons.check,
       color: Colors.green,
@@ -74,7 +74,7 @@ class _QuizPageState extends State<QuizPage> {
               onPressed: () {
                 //The user picked true.
                 setState(() {
-                  scoreKeepr.add(
+                  scoreKeeper.add(
                     Icon(
                       Icons.check,
                       color: Colors.green,
@@ -104,7 +104,7 @@ class _QuizPageState extends State<QuizPage> {
           ),
         ),
         Row(
-          children: scoreKeepr,
+          children: scoreKeeper,
         ),
       ],
     );
