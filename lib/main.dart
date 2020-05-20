@@ -28,33 +28,27 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  List<Icon> scoreKeeper = [
-    Icon(
-      Icons.check,
-      color: Colors.green,
-    ),
-    Icon(
-      Icons.close,
-      color: Colors.red,
-    ),
-  ];
+  List<Icon> scoreKeeper = [];
 
-  void checkAnswer(bool userPickedAnswer){
-    if (quizzBrain.getQuestionAnswer()==userPickedAnswer){
-      scoreKeeper.add(
-        Icon(
-          Icons.check,
-          color: Colors.green,
-        ),
-      );
-    } else{
-      scoreKeeper.add(
-        Icon(
-          Icons.close,
-          color: Colors.red,
-        ),
-      );
-    }
+  void checkAnswer(bool userPickedAnswer) {
+    setState(() {
+      if (quizzBrain.getQuestionAnswer() == userPickedAnswer) {
+        scoreKeeper.add(
+          Icon(
+            Icons.check,
+            color: Colors.green,
+          ),
+        );
+      } else {
+        scoreKeeper.add(
+          Icon(
+            Icons.close,
+            color: Colors.red,
+          ),
+        );
+      }
+      quizzBrain.nextQuestion();
+    });
   }
 
   @override
@@ -94,12 +88,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //The user picked true.
-
-
-                setState(() {
-                  checkAnswer(true);
-                  quizzBrain.nextQuestion();
-                });
+                checkAnswer(true);
               },
             ),
           ),
@@ -118,10 +107,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //The user picked false.
-                setState(() {
-                  checkAnswer(false);
-                  quizzBrain.nextQuestion();
-                });
+                checkAnswer(false);
               },
             ),
           ),
