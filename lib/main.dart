@@ -33,28 +33,29 @@ class _QuizPageState extends State<QuizPage> {
 
   void checkAnswer(bool userPickedAnswer) {
     setState(() {
-      if (quizzBrain.getQuestionAnswer() == userPickedAnswer) {
-        scoreKeeper.add(
-          Icon(
-            Icons.check,
-            color: Colors.green,
-          ),
-        );
-      } else {
-        scoreKeeper.add(
-          Icon(
-            Icons.close,
-            color: Colors.red,
-          ),
-        );
-      }
-      print(quizzBrain.isFinished());
       if (quizzBrain.isFinished()){
         Alert(context: context, title: "Félicitations", desc: "Vous avez terminé le quizz avec succès.").show();
         quizzBrain.reset();
         scoreKeeper.clear();
-      } else
+      } else {
+        if (quizzBrain.getQuestionAnswer() == userPickedAnswer) {
+          scoreKeeper.add(
+            Icon(
+              Icons.check,
+              color: Colors.green,
+            ),
+          );
+        } else {
+          scoreKeeper.add(
+            Icon(
+              Icons.close,
+              color: Colors.red,
+            ),
+          );
+        }
+
         quizzBrain.nextQuestion();
+      }
     });
   }
 
