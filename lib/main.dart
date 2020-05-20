@@ -32,10 +32,6 @@ class _QuizPageState extends State<QuizPage> {
   List<Icon> scoreKeeper = [];
 
   void checkAnswer(bool userPickedAnswer) {
-
-    Alert(context: context, title: "Félicitations", desc: "Vous avez terminé le quizz avec succès.").show();
-    quizzBrain.reset();
-    scoreKeeper.clear();
     setState(() {
       if (quizzBrain.getQuestionAnswer() == userPickedAnswer) {
         scoreKeeper.add(
@@ -53,7 +49,12 @@ class _QuizPageState extends State<QuizPage> {
         );
       }
       print(quizzBrain.isFinished());
-      quizzBrain.nextQuestion();
+      if (quizzBrain.isFinished()){
+        Alert(context: context, title: "Félicitations", desc: "Vous avez terminé le quizz avec succès.").show();
+        quizzBrain.reset();
+        scoreKeeper.clear();
+      } else
+        quizzBrain.nextQuestion();
     });
   }
 
