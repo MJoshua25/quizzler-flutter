@@ -40,6 +40,10 @@ class QuizzBrain{
 
   bool isFinished() => _questionNumber == _questionBank.length - 1;
 
+  void reset(){
+    _questionNumber = 0;
+  }
+
   String getQuestionText() => _questionBank[_questionNumber].questionText;
 
   bool getQuestionAnswer() => _questionBank[_questionNumber].questionAnswer;

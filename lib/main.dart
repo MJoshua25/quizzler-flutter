@@ -32,6 +32,7 @@ class _QuizPageState extends State<QuizPage> {
   List<Icon> scoreKeeper = [];
 
   void checkAnswer(bool userPickedAnswer) {
+
     setState(() {
       if (quizzBrain.getQuestionAnswer() == userPickedAnswer) {
         scoreKeeper.add(
@@ -48,6 +49,7 @@ class _QuizPageState extends State<QuizPage> {
           ),
         );
       }
+      print(quizzBrain.isFinished());
       quizzBrain.nextQuestion();
     });
   }
