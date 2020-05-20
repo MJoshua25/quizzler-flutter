@@ -7,9 +7,6 @@ class Question{
     questionAnswer = a;
   }*/
 
-  Question(String q, bool a){
-    questionText = q;
-    questionAnswer = a;
-  }
+  Question(this.questionText, this.questionAnswer);
 
 }
