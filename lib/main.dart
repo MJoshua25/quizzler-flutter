@@ -42,6 +42,12 @@ class _QuizPageState extends State<QuizPage> {
     'A slug\'s blood is green.',
   ];
 
+  List<bool> answers = [
+    false,
+    true,
+    true,
+  ];
+
   int questionIndex = 0;
 
   @override
@@ -81,6 +87,12 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //The user picked true.
+                bool correctAnswer = answers[questionIndex];
+                if (correctAnswer==false){
+                  print('Bonne réponse');
+                } else{
+                  print('Mauvaise réponse');
+                }
                 setState(() {
                   questionIndex++;
                   scoreKeeper.add(
