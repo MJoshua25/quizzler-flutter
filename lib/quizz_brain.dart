@@ -1,5 +1,6 @@
 import 'question.dart';
 
+
 class QuizzBrain{
   
   int _questionNumber = 0;
@@ -36,6 +37,8 @@ class QuizzBrain{
     if(_questionNumber<_questionBank.length - 1)
       _questionNumber++;
   }
+
+  bool isFinished() => _questionNumber == _questionBank.length - 1;
 
   String getQuestionText() => _questionBank[_questionNumber].questionText;
 
