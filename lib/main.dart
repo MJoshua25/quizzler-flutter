@@ -55,7 +55,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                quizzBrain.questionBank[questionIndex].questionText,
+                quizzBrain.getQuestionText(questionIndex),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -80,7 +80,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //The user picked true.
-                bool correctAnswer = quizzBrain.questionBank[questionIndex].questionAnswer;
+                bool correctAnswer = quizzBrain.getQuestionAnswer(questionIndex);
                 if (correctAnswer==false){
                   print('Bonne réponse');
                 } else{
