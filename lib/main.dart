@@ -39,6 +39,14 @@ class _QuizPageState extends State<QuizPage> {
     ),
   ];
 
+  void checkAnswer(bool userPickedAnswer){
+    if (quizzBrain.getQuestionAnswer()==userPickedAnswer){
+      print('Bonne réponse');
+    } else{
+      print('Mauvaise réponse');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -76,12 +84,8 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //The user picked true.
-                bool correctAnswer = quizzBrain.getQuestionAnswer();
-                if (correctAnswer==false){
-                  print('Bonne réponse');
-                } else{
-                  print('Mauvaise réponse');
-                }
+                checkAnswer(true);
+
                 setState(() {
                   quizzBrain.nextQuestion();
                   scoreKeeper.add(
@@ -109,6 +113,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //The user picked false.
+                checkAnswer(false);
                 setState(() {
                   quizzBrain.nextQuestion();
                   scoreKeeper.add(
