@@ -39,10 +39,6 @@ class _QuizPageState extends State<QuizPage> {
     ),
   ];
 
-
-
-  int questionIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -55,7 +51,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                quizzBrain.getQuestionText(questionIndex),
+                quizzBrain.getQuestionText(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -80,14 +76,14 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //The user picked true.
-                bool correctAnswer = quizzBrain.getQuestionAnswer(questionIndex);
+                bool correctAnswer = quizzBrain.getQuestionAnswer();
                 if (correctAnswer==false){
                   print('Bonne réponse');
                 } else{
                   print('Mauvaise réponse');
                 }
                 setState(() {
-                  questionIndex++;
+                  quizzBrain.nextQuestion();
                   scoreKeeper.add(
                     Icon(
                       Icons.check,
@@ -114,7 +110,7 @@ class _QuizPageState extends State<QuizPage> {
               onPressed: () {
                 //The user picked false.
                 setState(() {
-                  questionIndex++;
+                  quizzBrain.nextQuestion();
                   scoreKeeper.add(
                     Icon(
                       Icons.close,
