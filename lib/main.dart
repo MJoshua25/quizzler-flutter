@@ -35,6 +35,7 @@ class _QuizPageState extends State<QuizPage> {
 
     Alert(context: context, title: "Félicitations", desc: "Vous avez terminé le quizz avec succès.").show();
     quizzBrain.reset();
+    scoreKeeper.clear();
     setState(() {
       if (quizzBrain.getQuestionAnswer() == userPickedAnswer) {
         scoreKeeper.add(
