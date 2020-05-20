@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'question.dart';
 
 void main() => runApp(Quizzler());
 
@@ -35,6 +36,8 @@ class _QuizPageState extends State<QuizPage> {
       color: Colors.red,
     ),
   ];
+
+  Question q1 = Question(q: 'You can lead a cow down stairs but not up stairs.', a: false);
 
   List<String> questions = [
     'You can lead a cow down stairs but not up stairs.',
