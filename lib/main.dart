@@ -41,9 +41,19 @@ class _QuizPageState extends State<QuizPage> {
 
   void checkAnswer(bool userPickedAnswer){
     if (quizzBrain.getQuestionAnswer()==userPickedAnswer){
-      print('Bonne réponse');
+      scoreKeeper.add(
+        Icon(
+          Icons.check,
+          color: Colors.green,
+        ),
+      );
     } else{
-      print('Mauvaise réponse');
+      scoreKeeper.add(
+        Icon(
+          Icons.close,
+          color: Colors.red,
+        ),
+      );
     }
   }
 
@@ -84,16 +94,11 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //The user picked true.
-                checkAnswer(true);
+
 
                 setState(() {
+                  checkAnswer(true);
                   quizzBrain.nextQuestion();
-                  scoreKeeper.add(
-                    Icon(
-                      Icons.check,
-                      color: Colors.green,
-                    ),
-                  );
                 });
               },
             ),
@@ -113,15 +118,9 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //The user picked false.
-                checkAnswer(false);
                 setState(() {
+                  checkAnswer(false);
                   quizzBrain.nextQuestion();
-                  scoreKeeper.add(
-                    Icon(
-                      Icons.close,
-                      color: Colors.red,
-                    ),
-                  );
                 });
               },
             ),
